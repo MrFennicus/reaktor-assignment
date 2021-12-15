@@ -6,6 +6,7 @@ Some stats about past games are also calculated for each player and can be viewe
 The app is still under development and in addition to being a bit rough around the edges it also has multiple known bugs.
 
 [More info about the assignmnent](https://www.reaktor.com/assignment-2022-developers/)
+
 [Live demo deployed to Heroku](https://reaktor-assignment-frontend.herokuapp.com/)
 
 ## Used frameworks and application structure
@@ -18,18 +19,18 @@ A separate database could have also been setup for easier and more robust data r
 
 ## Installation
 ### Deno
-Get info on installing Deno [here](https://deno.land/manual/getting_started/installation)
-Backend dependencies are referenced in `/backend/deps.js` with URLs so no separate installation step is required
+Get info on installing Deno [here](https://deno.land/manual/getting_started/installation).  
+Backend dependencies are referenced in `/backend/deps.js` with URLs so no separate installation step is required.  
 ### Node.js
-The frontend requires npm (which is included in Node.js) to install dependencies, get it [here](https://nodejs.org/en/)
+The frontend requires npm (which is included in Node.js) to install dependencies, get it [here](https://nodejs.org/en/).  
 When npm is installed run `npm install` in `/frontend` to install dependencies.
 
 ## Usage
 ### Backend
-run `deno run --allow-all .\app.js` in `/backend` to start the server
+Run `deno run --allow-all .\app.js` in `/backend` to start the server.  
 ### Frontend
-run `npm run` in `/frontend` to start a Node development server to host the frontend on http://localhost:3000. Uses the backend on Heroku by default.
-TODO: add support to change the backend server from a config file or with a command line argument
+Run `npm run` in `/frontend` to start a Node development server to host the frontend on http://localhost:3000. Uses the backend on Heroku by default.
+TODO: add support to change the backend server from a config file or with a command line argument.  
 
 ## Dependencies
 ### Backend
