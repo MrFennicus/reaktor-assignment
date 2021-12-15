@@ -5,7 +5,7 @@ Some stats about past games are also calculated for each player and can be viewe
 
 The app is still under development and in addition to being a bit rough around the edges it also has multiple known bugs.
 
-[More info about the assignmnent](https://www.reaktor.com/assignment-2022-developers/)
+[More info about the assignmnent](https://www.reaktor.com/assignment-2022-developers/)  
 [Live demo deployed to Heroku](https://reaktor-assignment-frontend.herokuapp.com/)
 
 ## Used frameworks and application structure
