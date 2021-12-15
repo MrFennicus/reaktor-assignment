@@ -8,11 +8,17 @@ The app is still under development and in addition to being a bit rough around t
 [More info about the assignmnent](https://www.reaktor.com/assignment-2022-developers/)  
 [Live demo deployed to Heroku](https://reaktor-assignment-frontend.herokuapp.com/)  
 
-## Used frameworks and application structure
+## Frameworks and application structure
 The app consists of three main parts:
-1. API endpoint for retrieving both live and past games. This is provided in the assignment and is currently (15.12.2021) running on Reaktor's [servers](https://bad-api-assignment.reaktor.com/).
-2. Backend to parse data from the API and keep track of currently ongoing games. Backend runs on Deno framework. Only provides a WebSocket endpoint for easy deployment on Heroku which allows only one port to be used per app. Deployed to wss://reaktor-assignment-backend.herokuapp.com
-3. React frontend. Deployed to https://reaktor-assignment-frontend.herokuapp.com
+1. Provided API  
+For retrieving both live and past games.  
+This is provided in the assignment and is currently (15.12.2021) running on Reaktor's [servers](https://bad-api-assignment.reaktor.com/).
+2. Deno backend  
+Parses data from the API and keeps track of currently ongoing games.
+Runs on Deno framework.  
+Only provides a WebSocket endpoint for easy deployment on Heroku which allows only one port to be used per app. Deployed to wss://reaktor-assignment-backend.herokuapp.com
+3. React frontend.  
+Deployed to https://reaktor-assignment-frontend.herokuapp.com
 
 A separate database could have also been setup for easier and more robust data retrieval but was omitted for simplicity. 
 
@@ -26,10 +32,11 @@ When npm is installed run `npm install` in `/frontend` to install dependencies.
 
 ## Usage
 ### Backend
-Run `deno run --allow-all .\app.js` in `/backend` to start the server.  
+Run `deno run --allow-all .\app.js` in `/backend` to start the server on ws://localhost:8080.  
 ### Frontend
-Run `npm run` in `/frontend` to start a Node development server to host the frontend on http://localhost:3000. Uses the backend on Heroku by default.
-TODO: add support to change the backend server from a config file or with a command line argument.  
+Run `npm run` in `/frontend` to start a Node development server to host the frontend on http://localhost:3000. Uses the backend on Heroku by default.  
+#### TODO:
+add support to change the backend server from a config file or with a command line argument.  
 
 ## Dependencies
 ### Backend
