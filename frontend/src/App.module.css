@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 650px) {
+  .App {
+    flex-direction: row;
+    max-width: 60em;
+  }
+
+  .LiveGames {
+    max-width: 50%;
+    flex-grow: 1;
+  }
+
+  .PlayerInfo {
+    max-width: 50%;
+    flex-grow: 2;
+    box-shadow: 0.5em 0.5em 1.5em #444 inset;
+  
+  }
+}
+
+

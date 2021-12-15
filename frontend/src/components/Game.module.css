@@ -1,0 +1,70 @@
+.live {
+    background-color:rgba(255, 255, 255, 0.24);
+}
+.win {
+    background-color: rgba(0, 128, 0, 0.24);
+}
+.loss {
+    background-color: rgba(255, 0, 0, 0.24);
+}
+.tie {
+    background-color: rgba(255, 255, 0, 0.24);
+}
+
+.unresolved {
+    background-color: red;
+}
+.game{
+    padding: 0.5em;
+    transition: all 1s;
+    display: flex;
+    justify-content: space-between;
+}
+
+.liveIcon{
+    color: rgb(0, 128, 17);
+    -webkit-animation: breathing 1s ease-out infinite normal;
+    animation: breathing 2s ease-in-out infinite normal;
+}
+
+@keyframes breathing {
+    0% {
+      -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+      transform: scale(0.7);
+    }
+
+  
+    50% {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+    }
+    100% {
+      -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+      transform: scale(0.7);
+    }
+  }
+
+.hidden {
+    height: 0;
+    transition: all 0.5s;
+    /* visibility: hidden; */
+    position: absolute;
+    overflow: hidden;
+}
+
+.tooltip {
+    position: absolute;
+    transition: all 0.5s;
+    background-color: rgba(102, 102, 102, 0.747);
+    padding: 5px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.infoBox {
+    display: flex;
+    flex-direction: column;
+}
