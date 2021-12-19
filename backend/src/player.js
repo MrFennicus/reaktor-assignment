@@ -9,6 +9,7 @@ export default class Player {
     constructor(name) {
         this.name = name;
         this.finishedGames = [];
+        this.sorted = true // keeps track if the finished games array has been sorted after the last modification
         this.liveGames = [];
         this.wins = 0.0;
         this.losses = 0.0;
@@ -39,7 +40,18 @@ export default class Player {
         this.moveCounts[played] += 1;
 
         this.finishedGames.unshift(finishedGame);
+        this.sorted = false 
         this.liveGames.filter((game) => game.id !== gameData.id);
+    }
+
+    getFinishedGames() {
+        // lazy sorting
+        if(!this.sorted) {
+            this.finishedGames = this.finishedGames.sort((a,b) => b.time - a.time)
+            console.log("sorting games")
+            this.sorted = true
+        }
+        return this.finishedGames
     }
 
     gamesPlayed() {
