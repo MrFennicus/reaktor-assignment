@@ -16,11 +16,21 @@
         <div id="root">
             <p>Loading...</p>
         </div>
-        <footer style="text-align: center; bottom: 0; position: fixed; width: 100%; background-color: white;">
-          <br>
-          See the <a href="https://github.com/MrFennicus/reaktor-assignment">Github page</a> for more information about this app. <br><br>
-          <a href="%PUBLIC_URL%/about.txt">favicon licence</a><br>
-          <br>
+        <script>
+            const hideFooter = () => {
+                
+                console.log("xx")
+                
+            }
+        </script>
+        <footer style="text-align: center; bottom: 0; position: fixed; width: 100%; background-color: rgba(255,255,255,0.85);" id="footer">
+            <br>
+            <button onClick="document.getElementById('footer').remove()" style="background: none; border: 1px solid" >X</button>
+
+            See the <a href="https://github.com/MrFennicus/reaktor-assignment">Github page</a> for more information about this app.
+            <a href="%PUBLIC_URL%/about.txt">favicon licence</a>
+            <br>
+            <br>
         </footer>
     </body>
 </html>
