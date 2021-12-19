@@ -9,6 +9,13 @@ export const SelectedPlayerContextProvider = (props) => {
     const [player, setPlayer] = useState({})
     const [games, setGames] = useState([])
     const [loading, setLoading] = useState(false)
+    const [dataReady, setDataReady] = useState(false)
+
+    webSocketRouter.setHandler((data) => {
+        setDataReady(data.dataReady)
+        update(player)
+    }
+        , "dataReady")
 
     const pageUp = () => {
         setPage((prevValue) => Math.min(prevValue + 1, pageCount))
@@ -42,6 +49,7 @@ export const SelectedPlayerContextProvider = (props) => {
         setPageCount(data.pageCount)
         setGames(data.games)
         setLoading(false)
+        setDataReady(data.dataReady)
     }
 
     const context = {
@@ -50,6 +58,7 @@ export const SelectedPlayerContextProvider = (props) => {
         loading: loading,
         page: page,
         pageCount: pageCount,
+        dataReady: dataReady,
         pageUp: pageUp,
         pageDown: pageDown,
         pageUpUp: pageUpUp,
