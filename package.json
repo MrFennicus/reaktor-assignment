@@ -1,0 +1,10 @@
+{
+    "name": "reaktor_assignment",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "start": "cd frontend && npm start",
+      "build": "cd frontend && npm build"
+    }
+  }
+  
