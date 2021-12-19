@@ -1,1 +1,1 @@
-web: launch
+web: bin/launch
