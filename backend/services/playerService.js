@@ -12,7 +12,7 @@ export const fetchData = async (server, pathname = "/rps/history") => {
         body.data.forEach((gameData) => addGame(gameData))
         if (body.cursor) fetchData(server, body.cursor)
         else  {
-            server.clients.forEach(ws => ws.send(JSON.stringify({dataReady: true})))
+            server.clients.forEach(ws => ws.send(JSON.stringify({dataReady: true, requestId: "dataReady"})))
             dataReady = true
         }
     } catch (e) {
