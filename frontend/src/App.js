@@ -14,12 +14,14 @@ const App = () => {
 
     return (
         <div className={classes.App}>
-            <Card className={classes.LiveGames}>
-                <h1>Live games</h1>
+            <Card className = {classes.LiveGames}>
+                
                 <GameList
                     games={liveGamesCtx.games}
                     selectPlayer={selectPlayer}
-                />
+                    className = {classes.LiveGames}
+                    />
+
             </Card>
 
             <Card className={classes.PlayerInfo}>

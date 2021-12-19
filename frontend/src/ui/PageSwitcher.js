@@ -9,7 +9,7 @@ import classes from "./PageSwitcher.module.css"
 
 const PageSwitcher = (props) => {
     return (
-        <div className = {classes.PageSwitcher}>
+        <div className={classes.PageSwitcher}>
             <div>
                 {props.page} / {props.pageCount}
             </div>
@@ -25,6 +25,7 @@ const PageSwitcher = (props) => {
             <button onClick={props.pageUpUp}>
                 <FontAwesomeIcon icon={faAngleDoubleRight} />
             </button>
+            {props.children}
         </div>
     )
 }
