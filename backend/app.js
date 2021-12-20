@@ -2,8 +2,6 @@ import { StandardWebSocketClient, WebSocketServer } from "./deps.js"
 import * as liveService from "./services/liveService.js"
 import * as playerService from "./services/playerService.js"
 
-
-
 let port = 8080
 if (Deno.args.length > 0) {
     const lastArgument = Deno.args[Deno.args.length - 1]
@@ -15,12 +13,14 @@ const webSocketServer = new WebSocketServer(port)
 const webSocketClient = new StandardWebSocketClient(
     "wss://bad-api-assignment.reaktor.com/rps/live"
 )
+playerService.fetchData(webSocketServer)
 webSocketClient.on("open", () => {
     console.log("web socket client connected!")
 })
-webSocketClient.on("message", (message) =>
+webSocketClient.on("message", (message) => {
     liveService.onMessage(message, webSocketServer)
-)
+})
+webSocketClient.on("error", console.log)
 
 webSocketServer.on("connection", (ws) => {
     // when connected, send out all currently ongoing games
@@ -32,7 +32,6 @@ webSocketServer.on("connection", (ws) => {
     )
     // serve data when requested by the client
     ws.on("message", (message) => {
-        console.log(message)
         const data = JSON.parse(message)
         const parts = data.message.split("/")
         switch (parts[0]) {
