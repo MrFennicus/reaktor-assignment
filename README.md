@@ -1,9 +1,9 @@
 # My submission to Reaktor's assignment for developer applicants
 
 This app shows info about rock-paper-scissors matches played. It shows the currently ongoing games as well as the results of previous games for each player.
-Some stats about past games are also calculated for each player and can be viewed by hovering over a player's name. 
+Some stats about past games are also calculated for each player.
 
-The app is still under development and in addition to being a bit rough around the edges it also has multiple known bugs.
+The app is still under development.
 
 [More info about the assignmnent](https://www.reaktor.com/assignment-2022-developers/)  
 [Live demo deployed to Heroku](https://reaktor-assignment-frontend.herokuapp.com/)  
@@ -13,7 +13,7 @@ The app is still under development and in addition to being a bit rough around t
 The app consists of three main parts:
 1. Provided API  
 For retrieving both live and past games.  
-This is provided in the assignment and is currently (15.12.2021) running on Reaktor's [servers](https://bad-api-assignment.reaktor.com/).
+This is provided in the assignment and is currently (20.12.2021) running on Reaktor's [servers](https://bad-api-assignment.reaktor.com/).
 2. Deno backend  
 Parses data from the API and keeps track of currently ongoing games.
 Runs on Deno framework.  
@@ -35,9 +35,10 @@ When npm is installed run `npm install` in `/frontend` to install dependencies.
 ### Backend
 Run `deno run --allow-all .\app.js` in `/backend` to start the server on ws://localhost:8080.  
 ### Frontend
-Run `npm run` in `/frontend` to start a Node development server to host the frontend on http://localhost:3000. Uses the backend on Heroku by default.  
-#### TODO:
-add support to change the backend server from a config file or with a command line argument.  
+Backend server's address must be configured as REACT_APP_WEBSOCKETSERVER environment variable.
+On Windows run `$Env:REACT_APP_WEBSOCKETSERVER = "ws://localhost:8080"` to use local backend.
+Run `npm run` in `/frontend` to start a Node development server to host the frontend on http://localhost:3000.  
+
 
 ## Dependencies
 ### Backend
