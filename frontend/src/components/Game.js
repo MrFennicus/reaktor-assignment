@@ -30,27 +30,34 @@ const FinishedGame = (props) => {
     const className = classes[props.game.result] // 'tie'/'win'/'loss'
 
     return (
-        <div className={className + " " + classes.game}>
-            <div
-                onClick={() => props.selectPlayer(props.game.player)}
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-            >
+        <div
+            className={className + " " + classes.game}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+        >
+            <div>
                 <CustomIcon icon={props.game.result} /> vs{" "}
-                {props.game.opponent.name}
-                <PlayerStats
-                    playerName={props.game.opponent.name}
-                    className={hover ? classes.tooltip : classes.hidden}
-                    iconsClassName={classes.tooltipIcon}
-                />
+                <span
+                    className="clickable"
+                    onClick={() => props.selectPlayer(props.game.opponent)}
+                >
+                    {props.game.opponent.name}
+                    {/* <PlayerStats
+                        playerName={props.game.opponent.name}
+                        className={hover ? "" : classes.hidden}
+                    /> */}
+                </span>
             </div>
             <div>
                 <div className={classes.infoBox}>
-                    <Time time={props.game.time} />
                     <div>
                         <CustomIcon icon={props.game.player.played} /> vs{" "}
                         <CustomIcon icon={props.game.opponent.played} />
                     </div>
+                    <Time
+                        className={hover ? "" : classes.hidden}
+                        time={props.game.time}
+                    />
                 </div>
             </div>
         </div>
@@ -58,16 +65,25 @@ const FinishedGame = (props) => {
 }
 
 const LiveGame = (props) => {
+    const [hover, setHover] = useState(false)
     return (
         <div className={classes.live + " " + classes.game}>
             <CustomIcon icon="live" style="live" />
-            <button onClick={() => props.selectPlayer(props.game.playerA)}>
+            <span
+                className="clickable"
+                onClick={() => props.selectPlayer(props.game.playerA)}
+            >
                 {props.game.playerA.name}
-            </button>
+
+            </span>
             vs
-            <button onClick={() => props.selectPlayer(props.game.playerB)}>
+            <span
+                className="clickable"
+                onClick={() => props.selectPlayer(props.game.playerB)}
+            >
                 {props.game.playerB.name}
-            </button>
+
+            </span>
         </div>
     )
 }

@@ -5,7 +5,8 @@ import {
     faBalanceScale,
     faSkullCrossbones,
     faQuestionCircle,
-    faSatelliteDish
+    faSatelliteDish,
+    faStar
 } from "@fortawesome/free-solid-svg-icons"
 
 import {
@@ -23,10 +24,12 @@ const CustomIcon = (props) => {
         ROCK: faHandRock,
         PAPER: faHandPaper,
         SCISSORS: faHandScissors,
-        live: faSatelliteDish
+        live: faSatelliteDish,
+        star: faStar
     }
     const styles = {
-        live: classes.live
+        live: classes.live,
+        yellow: classes.yellow
     }
 
     return (

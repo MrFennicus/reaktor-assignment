@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar, faPercent, faTrophy } from "@fortawesome/free-solid-svg-icons"
 import classes from "./PlayerStats.module.css"
 import * as webSocketRouter from "../store/webSocketRouter"
+import CustomIcon from "../ui/CustomIcon"
 
 const PlayerStats = (props) => {
     const [mostPlayedHand, setMostPlayedHand] = useState(undefined)
@@ -19,12 +20,12 @@ const PlayerStats = (props) => {
     }, [props.playerName])
 
     return (
-        <div className={classes.PlayerStats + " " + props.className}>
-            <FontAwesomeIcon className = {classes.icon} icon={faStar} />: {mostPlayedHand}{" "}
-            <FontAwesomeIcon className = {classes.icon} icon={faTrophy} />{" "}
-            <FontAwesomeIcon className = {classes.icon} icon={faPercent} />:{" "}
-            {winRatio ? (winRatio * 100).toFixed(1) : 0}
-        </div>
+        <span className={classes.PlayerStats + " " + props.className}>
+            <br />
+            <CustomIcon style = 'yellow' icon='star' />: {<CustomIcon icon = {mostPlayedHand} />}{" "}
+            <CustomIcon style = 'yellow' icon='win' />{" "}
+            {winRatio ? (winRatio * 100).toFixed(1) : 0}%
+        </span>
     )
 }
 

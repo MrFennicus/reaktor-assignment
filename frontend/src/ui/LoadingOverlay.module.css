@@ -14,6 +14,10 @@
     }
   }
   
+  .loading:before {
+    z-index: -1;
+  }
+
   .loading:before,
   .loadingActive:before {
     content: "";

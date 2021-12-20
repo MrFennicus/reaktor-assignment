@@ -14,20 +14,17 @@ const App = () => {
 
     return (
         <div className={classes.App}>
-            <Card className = {classes.LiveGames}>
-                
+            <div className={classes.LiveGames}>
+                <h1>Live games</h1>
                 <GameList
                     games={liveGamesCtx.games}
                     selectPlayer={selectPlayer}
-                    className = {classes.LiveGames}
-                    />
+                    className={classes.LiveGames}
+                />
+            </div>
 
-            </Card>
-
-            <Card className={classes.PlayerInfo}>
-                {player === undefined ? (
-                    <Card>Select a player to see more information</Card>
-                ) : (
+            <div className={classes.PlayerInfo}>
+                {player !== undefined && (
                     <Player
                         player={player}
                         liveGames={liveGamesCtx.games.filter((game) =>
@@ -38,7 +35,7 @@ const App = () => {
                         selectPlayer={selectPlayer}
                     />
                 )}
-            </Card>
+            </div>
         </div>
     )
 }

@@ -15,7 +15,7 @@ const Player = (props) => {
     }, [props.player, selectedPlayerCtx.page, firstLiveGame])
 
     return (
-        <Card className={props.className}>
+        <div className={props.className}>
             <div>
                 <h1>{props.player.name}</h1>
                 {props.liveGames.length !== 0 ? (
@@ -46,7 +46,7 @@ const Player = (props) => {
                 </GameList>
             </div>
             <LoadingOverlay active={selectedPlayerCtx.loading} />
-        </Card>
+        </div>
     )
 }
 export default Player

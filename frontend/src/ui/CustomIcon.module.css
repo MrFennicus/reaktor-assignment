@@ -4,6 +4,10 @@
     animation: breathing 2s ease-in-out infinite normal;
 }
 
+.yellow {
+    color: yellow;
+}
+
 @keyframes breathing {
     0% {
       -webkit-transform: scale(0.7);
