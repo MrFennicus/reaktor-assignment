@@ -1,5 +1,3 @@
-require('dotenv').config()
-console.log(process.env)
 const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKETSERVER)
 let handlers = {} // keeps track of how to handle responses to each request
 let requests = [] // buffer for requests, used if the requests can't be made right away
