@@ -20,12 +20,15 @@ const PlayerStats = (props) => {
     }, [props.playerName])
 
     return (
-        <span className={classes.PlayerStats + " " + props.className}>
-            <br />
-            <CustomIcon style = 'yellow' icon='star' />: {<CustomIcon icon = {mostPlayedHand} />}{" "}
-            <CustomIcon style = 'yellow' icon='win' />{" "}
-            {winRatio ? (winRatio * 100).toFixed(1) : 0}%
-        </span>
+        <div className={classes.PlayerStats + " " + props.className}>
+            <h2>Stats</h2>
+            <p>
+
+            Favourite hand: {<CustomIcon icon = {mostPlayedHand} />}{" "}
+            Win percentage: {winRatio ? (winRatio * 100).toFixed(1) : 0}%
+            </p>
+            
+        </div>
     )
 }
 

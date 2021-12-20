@@ -42,10 +42,7 @@ const FinishedGame = (props) => {
                     onClick={() => props.selectPlayer(props.game.opponent)}
                 >
                     {props.game.opponent.name}
-                    {/* <PlayerStats
-                        playerName={props.game.opponent.name}
-                        className={hover ? "" : classes.hidden}
-                    /> */}
+
                 </span>
             </div>
             <div>

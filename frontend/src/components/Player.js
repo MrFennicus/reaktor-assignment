@@ -4,6 +4,7 @@ import PageSwitcher from "../ui/PageSwitcher"
 import LoadingOverlay from "../ui/LoadingOverlay"
 import SelectedPlayerContext from "../store/selectedPlayerContext"
 import { useContext, useEffect } from "react"
+import PlayerStats from "./PlayerStats"
 
 const Player = (props) => {
     const selectedPlayerCtx = useContext(SelectedPlayerContext)
@@ -18,6 +19,9 @@ const Player = (props) => {
         <div className={props.className}>
             <div>
                 <h1>{props.player.name}</h1>
+                <Card>
+                    <PlayerStats playerName={selectedPlayerCtx.player.name} />
+                </Card>
                 {props.liveGames.length !== 0 ? (
                     <div>
                         <GameList
