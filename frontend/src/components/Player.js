@@ -23,6 +23,7 @@ const Player = (props) => {
                         <GameList
                             games={props.liveGames}
                             player={selectedPlayerCtx.player.name}
+                            selectPlayer={props.selectPlayer}
                         />
                     </div>
                 ) : null}
