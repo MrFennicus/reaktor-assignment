@@ -7,6 +7,7 @@ The app is still under development and in addition to being a bit rough around t
 
 [More info about the assignmnent](https://www.reaktor.com/assignment-2022-developers/)  
 [Live demo deployed to Heroku](https://reaktor-assignment-frontend.herokuapp.com/)  
+(NOTE! With the free version of Heroku used for deployment, the servers for both front- and backend take a while to start up from idle.)
 
 ## Frameworks and application structure
 The app consists of three main parts:
