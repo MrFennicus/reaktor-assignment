@@ -48,7 +48,6 @@ export default class Player {
         // lazy sorting
         if(!this.sorted) {
             this.finishedGames = this.finishedGames.sort((a,b) => b.time - a.time)
-            console.log("sorting games")
             this.sorted = true
         }
         return this.finishedGames

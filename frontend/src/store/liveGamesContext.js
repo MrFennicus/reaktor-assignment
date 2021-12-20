@@ -16,7 +16,6 @@ export const LiveGamesContextProvider = (props) => {
 
     const handleDataFromServer = ({ liveGames }) => {
         for (const game of liveGames) {
-            console.log(game)
             if (game.finished === false) {
                 addGame(game)
             } else {
@@ -25,7 +24,7 @@ export const LiveGamesContextProvider = (props) => {
         }
     }
 
-    webSocketRouter.setHnadler(handleDataFromServer, "live")
+    webSocketRouter.setHandler(handleDataFromServer, "live")
 
     const context = {
         games: liveGames,
