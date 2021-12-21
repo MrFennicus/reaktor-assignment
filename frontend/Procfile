@@ -1,1 +1,1 @@
-web: deno run --allow-all --unstable ./frontend/serve-static.js ${PORT}
+web: cd frontend && deno run --allow-all --unstable serve-static.js ${PORT}
