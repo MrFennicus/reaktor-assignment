@@ -1,1 +1,1 @@
-web: npm start
+web: deno run --allow-all --unstable ./frontend/serve-static.js ${PORT}

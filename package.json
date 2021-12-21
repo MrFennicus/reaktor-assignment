@@ -3,8 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-      "start": "cd frontend && npm start",
-      "build": "cd frontend && npm install"
+      "install": "cd frontend && npm install",
+      "startFrontend": "cd frontend && deno run --allow-all --unstable serve-static.js",
+      "build": "cd frontend && npm run build",
+      "startBackend": "deno run --allow-all --unstable ./backend/app.js"
     }
   }
   

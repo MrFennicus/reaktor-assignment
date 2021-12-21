@@ -18,7 +18,7 @@ This is provided in the assignment and is currently (20.12.2021) running on Reak
 Parses data from the API and keeps track of currently ongoing games.
 Runs on Deno framework.  
 Only provides a WebSocket endpoint for easy deployment on Heroku which allows only one port to be used per app. Deployed to wss://reaktor-assignment-backend.herokuapp.com
-3. React frontend.  
+3. React frontend, served on a static Deno server. 
 Deployed to https://reaktor-assignment-frontend.herokuapp.com
 
 A separate database could have also been setup for easier and more robust data retrieval but was omitted for simplicity. 
@@ -28,18 +28,15 @@ A separate database could have also been setup for easier and more robust data r
 Get info on installing Deno [here](https://deno.land/manual/getting_started/installation).  
 Backend dependencies are referenced in `/backend/deps.js` with URLs so no separate installation step is required.  
 ### Node.js
-The frontend requires npm (which is included in Node.js) to install dependencies, get it [here](https://nodejs.org/en/).  
-When npm is installed run `npm install` in `/frontend` to install dependencies.
+The frontend is also served on a Deno server, but Node.js and npm is used for building and installing dependencies, get them [here](https://nodejs.org/en/).  
+When Node.js and Deno are installed, install dependencies with `npm install` and build the app with `npm run build`. The build step requires the backend 
+server's address to be configured as REACT_APP_WEBSOCKETSERVER environment variable. (For example on Windows run `$Env:REACT_APP_WEBSOCKETSERVER = "ws://localhost:8080"` *before* building to use local backend.) 
 
 ## Usage
 ### Backend
-Run `deno run --allow-all .\app.js` in `/backend` to start the server on ws://localhost:8080.  
+Run `npm run startBackend` to start the server on ws://localhost:8080. If npm is not installed you can alternatively run `deno run --allow-all .\app.js` in `/backend`.
 ### Frontend
-Backend server's address must be configured as REACT_APP_WEBSOCKETSERVER environment variable.
-On Windows run `$Env:REACT_APP_WEBSOCKETSERVER = "ws://localhost:8080"` to use local backend.
-Run `npm run` in `/frontend` to start a Node development server to host the frontend on http://localhost:3000.  
-
-
+After installation and build steps run `npm run startFrontend` in the root folder to start a Deno server to host the frontend on http://localhost:3000.  
 ## Dependencies
 ### Backend
 [deno websocket](https://deno.land/x/websocket@v0.1.3)
