@@ -17,7 +17,7 @@ export const fetchData = async (server, pathname = "/rps/history") => {
         }
     } catch (e) {
         // Something went wrong, wait for a bit and try again.
-        await new Promise((r) => setTimeout(r, 10000))
+        await new Promise((r) => setTimeout(r, 2000))
         fetchData(server, pathname)
     }
 }
