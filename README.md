@@ -39,9 +39,9 @@ Run `npm run startBackend` to start the server on ws://localhost:8080. If npm is
 After installation and build steps run `npm run startFrontend` in the root folder to start a Deno server to host the frontend on http://localhost:3000.  
 ## Dependencies
 ### Backend
-[deno websocket](https://deno.land/x/websocket@v0.1.3)
-[Oak](https://deno.land/x/oak@v10.1.0)
+[deno websocket](https://deno.land/x/websocket@v0.1.3)  
+[Oak](https://deno.land/x/oak@v10.1.0)  
 ### Frontend
-[react](https://reactjs.org/)
-[react-fontawesome](https://github.com/FortAwesome/react-fontawesome)
-[create-react-app](https://create-react-app.dev/)
+[react](https://reactjs.org/)  
+[react-fontawesome](https://github.com/FortAwesome/react-fontawesome)  
+[create-react-app](https://create-react-app.dev/)  
