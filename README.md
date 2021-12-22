@@ -13,7 +13,7 @@ The app is still under development.
 The app consists of three main parts:
 1. Provided API  
 For retrieving both live and past games.  
-This is provided in the assignment and is currently (20.12.2021) running on Reaktor's [servers](https://bad-api-assignment.reaktor.com/).
+This is provided in the assignment and is currently (22.12.2021) running on Reaktor's [servers](https://bad-api-assignment.reaktor.com/).
 2. Deno backend  
 Parses data from the API and keeps track of currently ongoing games.
 Runs on Deno framework.  
@@ -28,7 +28,7 @@ A separate database could have also been setup for easier and more robust data r
 Get info on installing Deno [here](https://deno.land/manual/getting_started/installation).  
 Backend dependencies are referenced in `/backend/deps.js` with URLs so no separate installation step is required.  
 ### Node.js
-The frontend is also served on a Deno server, but Node.js and npm is used for building and installing dependencies, get them [here](https://nodejs.org/en/).  
+The frontend is also served on a Deno server, but Node.js and npm are used for building and installing dependencies, get them [here](https://nodejs.org/en/).  
 When Node.js and Deno are installed, install dependencies with `npm install` and build the app with `npm run build`. The build step requires the backend 
 server's address to be configured as REACT_APP_WEBSOCKETSERVER environment variable. (For example on Windows run `$Env:REACT_APP_WEBSOCKETSERVER = "ws://localhost:8080"` *before* building to use local backend.) 
 
