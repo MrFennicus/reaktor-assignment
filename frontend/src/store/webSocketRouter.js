@@ -5,9 +5,7 @@ let requests = [] // buffer for requests, used if the requests can't be made rig
 export const init = () => {
     // if already initialized, no need to do anything
     if (!webSocket) {
-        
         webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKETSERVER)
-        
         webSocket.onmessage = (event) => {
             const data = JSON.parse(event.data)
             if (data.requestId in handlers) {
