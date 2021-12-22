@@ -5,6 +5,8 @@ import classes from "./PlayerStats.module.css"
 import * as webSocketRouter from "../store/webSocketRouter"
 import CustomIcon from "../ui/CustomIcon"
 
+webSocketRouter.init()
+
 const PlayerStats = (props) => {
     const [mostPlayedHand, setMostPlayedHand] = useState(undefined)
     const [winRatio, setwinRatio] = useState(undefined)

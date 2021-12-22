@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react"
 import * as webSocketRouter from "./webSocketRouter"
 
 const LiveGamesContext = createContext()
+webSocketRouter.init()
 
 export const LiveGamesContextProvider = (props) => {
     const [liveGames, setLiveGames] = useState([])

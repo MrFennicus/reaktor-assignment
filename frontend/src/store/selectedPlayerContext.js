@@ -2,6 +2,8 @@ import { createContext, useState, useEffect } from "react"
 import * as webSocketRouter from "./webSocketRouter"
 
 const SelectedPlayerContext = createContext()
+webSocketRouter.init()
+
 
 export const SelectedPlayerContextProvider = (props) => {
     const [page, setPage] = useState(1)
