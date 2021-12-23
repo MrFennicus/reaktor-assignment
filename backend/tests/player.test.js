@@ -17,8 +17,8 @@ Deno.test("Players stats should change correctly after a game is added", () => {
     assertEquals(player.gamesPlayed(), 1)
     assertEquals(player.mostPlayedHand(), "SCISSORS")
 });
-
-const newPlayer = new Player("Teppo Testikäyttäjä");
+// used in multiple tests, test results could be affected by each other
+const globalPlayer = new Player("Teppo Testikäyttäjä");
 Deno.test("Players stats should keep up when adding multiple games", () => {
     const hands = [["ROCK", "ROCK"], ["ROCK", "SCISSORS"], ["ROCK", "PAPER"],
                    ["PAPER", "ROCK"], ["PAPER", "SCISSORS"], ["PAPER", "PAPER"],
@@ -35,15 +35,16 @@ Deno.test("Players stats should keep up when adding multiple games", () => {
             playerA: { name: "Teppo Testikäyttäjä", played: hands[i][0] },
             playerB: { name: "Untamo Hämäläinen", played: hands[i][1] }
         };
-        newPlayer.addGame(data);
-        assertEquals(newPlayer.winRatio(), wins[i]/games[i])
-        assertEquals(newPlayer.gamesPlayed(), games[i])
+        globalPlayer.addGame(data);
+        assertEquals(globalPlayer.winRatio(), wins[i]/games[i])
+        assertEquals(globalPlayer.gamesPlayed(), games[i])
     }
 })
 
 Deno.test("Players games should be in correct order when returned", () => {
-    assertEquals(newPlayer.getFinishedGames().map(game => game.time), [9,8,7,6,5,4,3,2,1])
-    newPlayer.addGame({
+    // if this fails the problem could be in the previous test
+    assertEquals(globalPlayer.getFinishedGames().map(game => game.time), [9,8,7,6,5,4,3,2,1])
+    globalPlayer.addGame({
         type: "GAME_RESULT",
         gameId: 0,
         t: 0,
@@ -51,5 +52,26 @@ Deno.test("Players games should be in correct order when returned", () => {
         playerB: { name: "Untamo Hämäläinen", played: "PAPER" }
     })
     // games should be ordered so that the latest game is first based on the timestamp
-    assertEquals(newPlayer.getFinishedGames().map(game => game.time), [9,8,7,6,5,4,3,2,1,0])
+    assertEquals(globalPlayer.getFinishedGames().map(game => game.time), [9,8,7,6,5,4,3,2,1,0])
+})
+
+Deno.test("Most played hand should update correctly when games are added", () => {
+    const player = new Player("Matti Meikäläinen")
+    const addGamesWithHand = (hand, amount) => {
+        for (let i = 0; i < amount; i++) {
+            player.addGame({
+                type: "GAME_RESULT",
+                gameId: 0,
+                t: 0,
+                playerA: { name: "Matti Meikäläinen", played: hand },
+                playerB: { name: "Untamo Hämäläinen", played: "PAPER" }
+            })
+        }
+    }
+    addGamesWithHand("ROCK",1)
+    assertEquals(player.mostPlayedHand(), "ROCK")
+    addGamesWithHand("PAPER", 2)
+    assertEquals(player.mostPlayedHand(), "PAPER")
+    addGamesWithHand("SCISSORS", 3)
+    assertEquals(player.mostPlayedHand(), "SCISSORS")
 })

@@ -33,13 +33,13 @@ Deno.test("Finised game should initialize correctly", () => {
         gameId: "a1b2c3d4e5f6",
         t: 123456789,
     }
-    const game = new FinishedGame(data, "Antti Ahtisaari")
-    assertEquals(game.player, data.playerA)
-    assertEquals(game.opponent, data.playerB)
+    const game = new FinishedGame(data, "Bertta Bukowski")
+    assertEquals(game.player, data.playerB)
+    assertEquals(game.opponent, data.playerA)
     assertEquals(game.id, data.gameId)
     assertEquals(game.time, data.t)
     assertEquals(game.finished, true)
-    assertEquals(game.result, "win")
+    assertEquals(game.result, "loss")
 })
 
 Deno.test("Finished game should resolve game result correctly with all combinations", () => {
