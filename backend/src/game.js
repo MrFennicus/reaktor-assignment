@@ -11,10 +11,10 @@ export class FinishedGame {
         if (gameData.playerA.name === playerName) {
             this.player = gameData.playerA
             this.opponent = gameData.playerB
-        } else {
+        } else if (gameData.playerB.name === playerName) {
             this.player = gameData.playerB
             this.opponent = gameData.playerA
-        }
+        } else throw new Error("Given player name must be present in game data")
 
         if (this.player.played === this.opponent.played) this.result =  "tie"
         else
