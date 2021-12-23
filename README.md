@@ -1,4 +1,5 @@
 # My submission to Reaktor's assignment for developer applicants
+[![Backend tests](https://github.com/MrFennicus/reaktor-assignment/actions/workflows/deno.yml/badge.svg)](https://github.com/MrFennicus/reaktor-assignment/actions/workflows/deno.yml)
 
 This app shows info about rock-paper-scissors matches played. It shows the currently ongoing games as well as the results of previous games for each player.
 Some stats about past games are also calculated for each player.
