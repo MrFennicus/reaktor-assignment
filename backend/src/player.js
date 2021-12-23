@@ -10,7 +10,6 @@ export default class Player {
         this.name = name;
         this.finishedGames = [];
         this.sorted = true // keeps track if the finished games array has been sorted after the last modification
-        this.liveGames = [];
         this.wins = 0.0;
         this.losses = 0.0;
         this.ties = 0.0;
@@ -41,7 +40,6 @@ export default class Player {
 
         this.finishedGames.unshift(finishedGame);
         this.sorted = false 
-        this.liveGames.filter((game) => game.id !== gameData.id);
     }
 
     getFinishedGames() {
@@ -63,8 +61,6 @@ export default class Player {
 
     // goes through the move counts and returns the key with biggest count (one of "ROCK", "PAPER" or "SCISSORS")
     mostPlayedHand() {
-        return Object.keys(this.moveCounts).reduce((a, b) =>
-            this.moveCounts[a] > this.moveCounts[b] ? a : b
-        );
+        return Object.keys(this.moveCounts).reduce((a, b) => this.moveCounts[a] > this.moveCounts[b] ? a : b);
     }
 }
