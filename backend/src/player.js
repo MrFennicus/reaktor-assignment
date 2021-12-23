@@ -54,16 +54,17 @@ export default class Player {
     }
 
     gamesPlayed() {
-        return this.wins + this.losses + this.ties + this.undeterminedGames;
+        return this.wins + this.losses + this.ties + this.undeterminedGames
     }
     winRatio() {
-        return this.wins / this.gamesPlayed();
+        const ratio = this.wins / this.gamesPlayed()
+        return ratio ? ratio : 0;
     }
 
     // goes through the move counts and returns the key with biggest count (one of "ROCK", "PAPER" or "SCISSORS")
     mostPlayedHand() {
         return Object.keys(this.moveCounts).reduce((a, b) =>
-            this.moveCounts[a] < this.moveCounts[b] ? a : b
+            this.moveCounts[a] > this.moveCounts[b] ? a : b
         );
     }
 }
