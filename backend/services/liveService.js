@@ -3,11 +3,12 @@ import * as PlayerService from "../services/playerService.js"
 
 const liveGames = {}
 
-export const onMessage = (message, server) => {
+export const handleMessage = (message) => {
     const result = validResult(message)
     const begin = validBegin(message)
-    if (result) finishGame(result, server)
-    else if (begin) addGame(begin, server)
+    if (result) return finishGame(result)
+    else if (begin) return addGame(begin)
+    else return undefined
 }
 
 const validResult = (message) => {
@@ -29,43 +30,28 @@ const validResult = (message) => {
 }
 const validBegin = (message) => {
     const data = JSON.parse(message.data.replace(/\\"/g, '"').slice(1, -1))
-    if (
-        data &&
-        data.gameId &&
-        data.playerA &&
-        data.playerB &&
-        data.type == "GAME_BEGIN"
-    )
-        return data
+    if (data && data.gameId && data.playerA && data.playerB && data.type == "GAME_BEGIN") return data
     else return undefined
 }
 
-const addGame = (gameData, server) => {
+const addGame = (gameData) => {
     liveGames[gameData.gameId] = new LiveGame(gameData)
-    server.clients.forEach((client) =>
-        client.send(
-            JSON.stringify({
-                liveGames: [liveGames[gameData.gameId]],
-                requestId: "live"
-            })
-        )
-    )
+    return JSON.stringify({
+        liveGames: [liveGames[gameData.gameId]],
+        requestId: "live",
+    })
 }
 
-const finishGame = (gameData, server) => {
+const finishGame = (gameData) => {
     const id = gameData.gameId
     const game = liveGames[id]
     if (id in liveGames) {
         delete liveGames[id]
         PlayerService.addGame(gameData)
-        server.clients.forEach((client) =>
-            client.send(
-                JSON.stringify({
-                    liveGames: [{ id: id, finished: true }],
-                    requestId: "live"
-                })
-            )
-        )
+        return JSON.stringify({
+            liveGames: [{ id: id, finished: true }],
+            requestId: "live",
+        })
     }
 }
 

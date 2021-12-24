@@ -3,24 +3,26 @@ import Player from "../src/player.js"
 const players = {} // dictionary where key is the players name and value is the corresponding Player object
 let dataReady = false
 
-export const fetchData = async (server, pathname = "/rps/history") => {
+export const fetchData = async (pathname = "/rps/history") => {
     try {
         const url = new URL(pathname, "http://bad-api-assignment.reaktor.com/")
         const data = await fetch(url)
         const text = await data.text()
         const body = JSON.parse(text)
         body.data.forEach((gameData) => addGame(gameData))
-        if (body.cursor) fetchData(server, body.cursor)
+        if (body.cursor) return fetchData(body.cursor)
         else  {
-            server.clients.forEach(ws => ws.send(JSON.stringify({dataReady: true, requestId: "dataReady"})))
             dataReady = true
+            return (JSON.stringify({dataReady: true, requestId: "dataReady"}))
         }
     } catch (e) {
         // Something went wrong, wait for a bit and try again.
         await new Promise((r) => setTimeout(r, 2000))
-        fetchData(server, pathname)
+        return fetchData(pathname)
     }
 }
+
+export const onDataReady = (callback) => dataReadyCallback = callback
 
 export const addGame = (gameData) => {
     if (!(gameData.playerA.name in players))
