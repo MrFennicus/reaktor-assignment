@@ -11,25 +11,20 @@ const PlayerStats = (props) => {
     const [mostPlayedHand, setMostPlayedHand] = useState(undefined)
     const [winRatio, setwinRatio] = useState(undefined)
 
-   
     useEffect(() => {
-        webSocketRouter.request(`players/${props.playerName}`, 
-            async (data) => {
-                setMostPlayedHand(data.playerStats.mostPlayedHand)
-                setwinRatio(data.playerStats.winRatio)
-            }
-        )
+        webSocketRouter.request(`players/${props.playerName}`, async (data) => {
+            setMostPlayedHand(data.mostPlayedHand)
+            setwinRatio(data.winRatio)
+        })
     }, [props.playerName])
 
     return (
         <div className={classes.PlayerStats + " " + props.className}>
             <h2>Stats</h2>
             <p>
-
-            Favourite hand: {<CustomIcon icon = {mostPlayedHand} />}{" "}
-            Win percentage: {winRatio ? (winRatio * 100).toFixed(1) : 0}%
+                Favourite hand: {<CustomIcon icon={mostPlayedHand} />} Win
+                percentage: {winRatio ? (winRatio * 100).toFixed(1) : 0}%
             </p>
-            
         </div>
     )
 }
