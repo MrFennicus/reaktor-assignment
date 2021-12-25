@@ -3,9 +3,9 @@ import Player from "../src/player.js"
 const players = {} // dictionary where key is the players name and value is the corresponding Player object
 let dataReady = false
 
-export const fetchData = async (pathname = "/rps/history") => {
+export const fetchData = async (apiAddress, pathname = "/rps/history") => {
     try {
-        const url = new URL(pathname, "http://bad-api-assignment.reaktor.com/")
+        const url = new URL(pathname, apiAddress)
         const data = await fetch(url)
         const text = await data.text()
         const body = JSON.parse(text)

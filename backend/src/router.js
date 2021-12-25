@@ -3,10 +3,10 @@ import * as liveService from "../services/liveService.js"
 import { WebSocketServer, StandardWebSocketClient } from "../deps.js"
 
 export class Router {
-    constructor(port) {
+    constructor(port, apiAddress) {
         this.webSocketServer = new WebSocketServer(port)
         // send a message to clients when data is ready
-        playerService.fetchData().then(this.sendToAll)
+        playerService.fetchData(apiAddress).then(this.sendToAll)
 
         this.webSocketServer.on("connection", (ws) => {
             // when connected, send out all currently ongoing games

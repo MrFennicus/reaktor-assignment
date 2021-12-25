@@ -7,7 +7,8 @@ if (Deno.args.length > 0) {
     const lastArgument = Deno.args[Deno.args.length - 1]
     port = Number(lastArgument)
 }
-const router = new Router(port)
+let apiAddress = "https://bad-api-assignment.reaktor.com"
+const router = new Router(port, apiAddress)
 console.log(`serving on ${port}`)
 
 
