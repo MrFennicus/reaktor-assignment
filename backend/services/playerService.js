@@ -10,7 +10,7 @@ export const fetchData = async (apiAddress, pathname = "/rps/history") => {
         const text = await data.text()
         const body = JSON.parse(text)
         body.data.forEach((gameData) => addGame(gameData))
-        if (body.cursor) return fetchData(body.cursor)
+        if (body.cursor) return fetchData(apiAddress, body.cursor)
         else  {
             dataReady = true
             return (JSON.stringify({dataReady: true, requestId: "dataReady"}))
@@ -18,7 +18,7 @@ export const fetchData = async (apiAddress, pathname = "/rps/history") => {
     } catch (e) {
         // Something went wrong, wait for a bit and try again.
         await new Promise((r) => setTimeout(r, 2000))
-        return fetchData(pathname)
+        return fetchData(apiAddress, pathname)
     }
 }
 

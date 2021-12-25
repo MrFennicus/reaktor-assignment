@@ -5,13 +5,12 @@ import { WebSocketServer, StandardWebSocketClient } from "../deps.js"
 export class Router {
     constructor(port, apiAddress) {
         this.webSocketServer = new WebSocketServer(port)
-        // send a message to clients when data is ready
+        // send a message to clients when all data has been fetched from api
         playerService.fetchData(apiAddress).then(this.sendToAll)
 
         this.webSocketServer.on("connection", (ws) => {
             // when connected, send out all currently ongoing games
             ws.send(this.respondWithData({ liveGames: liveService.getLiveGames() }, "live"))
-
             // serve data when requested by the client
             ws.on("message", (request) => ws.send(this.respondToRequest(request)))
             ws.on("error", console.log)
@@ -37,7 +36,6 @@ export class Router {
     respondToRequest = (requestJSON) => {
         const data = JSON.parse(requestJSON)
         const [request, ...args] = data.message.split("/")
-
         const respondWithFunction = (fnc, nofArgs) => {
             if (args.length === nofArgs) {
                 return this.respondWithData(fnc(...args), data.id)
