@@ -6,7 +6,7 @@ export class Router {
     constructor(port) {
         this.webSocketServer = new WebSocketServer(port)
         // send a message to clients when data is ready
-        playerService.fetchData().then(this.sendToAll)
+        // playerService.fetchData().then(this.sendToAll)
 
         this.webSocketServer.on("connection", (ws) => {
             // when connected, send out all currently ongoing games
@@ -17,10 +17,10 @@ export class Router {
             ws.on("error", console.log)
         })
         this.webSocketServer.on("error", console.log)
-
-        this.webSocketClient = new StandardWebSocketClient(
-            "wss://bad-api-assignment.reaktor.com/rps/live"
-        )
+        
+        const envEndpoint = Deno.env.get("DENO_API_ENDPOINT")
+        const endpoint = envEndpoint ? envEndpoint : "wss://bad-api-assignment.reaktor.com/rps/live"
+        this.webSocketClient = new StandardWebSocketClient(endpoint)
         this.webSocketClient.on("open", () => console.log("web socket client connected!"))
         this.webSocketClient.on("message", (message) => {
             const response = liveService.handleMessage(message)
