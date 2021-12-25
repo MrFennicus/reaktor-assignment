@@ -61,14 +61,14 @@ Deno.test({name: "Should forward received updates on live games to clients", fn:
     assertObjectMatch((JSON.parse((await received3).data)), {requestId: "live", liveGames: [{finished: true, id:"123"}]})
 }, sanitizeOps: false, sanitizeResources: false})
 
-Deno.test({name: "Should serve requested data", fn: async () => {
-    const testClient = new StandardWebSocketClient("ws://localhost:4321")
-    await listen(testClient, "open")  // wait for connection
-    await listen(testClient, "message") // wait for ongoing live games
+// Deno.test({name: "Should serve requested data", fn: async () => {
+//     const testClient = new StandardWebSocketClient("ws://localhost:4321")
+//     await listen(testClient, "open")  // wait for connection
+//     await listen(testClient, "message") // wait for ongoing live games
 
-    // testClient.send(JSON.stringify({message: "players/Kokko Järvinen", id: "myRequestId"}))
-    testClient.send(JSON.stringify({message: "games/Kokko Järvinen/0", id: "myRequestId"}))
-    const received = listen(testClient, "message")
-    console.log((await received).data)
-    // assertObjectMatch((JSON.parse((await received).data)), {})
-}, sanitizeOps: false, sanitizeResources: false})
+//     // testClient.send(JSON.stringify({message: "players/Kokko Järvinen", id: "myRequestId"}))
+//     testClient.send(JSON.stringify({message: "games/Kokko Järvinen/0", id: "myRequestId"}))
+//     const received = listen(testClient, "message")
+//     console.log((await received).data)
+//     // assertObjectMatch((JSON.parse((await received).data)), {})
+// }, sanitizeOps: false, sanitizeResources: false})
